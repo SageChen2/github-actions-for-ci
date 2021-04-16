@@ -26,7 +26,7 @@ jobs:
           name: webpack artifacts
           path: public
     - name: Use Node.js ${{ matrix.node-version }}
-      build
+    needs: build
     - with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
