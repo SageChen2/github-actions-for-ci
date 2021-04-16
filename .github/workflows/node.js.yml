@@ -27,9 +27,10 @@ jobs:
         name: webpack artifacts
         path: public
     - name: Use Node.js ${{ matrix.node-version }}
-    - build:
-        with:
+    - uses: actions/setup-node@v2
+    - with:
         node-version: ${{ matrix.node-version }}
+           
     - name: npm install, and test
       run: |
         npm install
