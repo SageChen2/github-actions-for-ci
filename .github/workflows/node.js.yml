@@ -20,13 +20,20 @@ jobs:
         node-version: [12.x, 14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
+    
+    test:
+      needs: build
+      runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v2
-         build
-          
-          path: public
+    - uses: actions/download-artifact@main
+      with: 
+        name: webpack artifacts
+        path: public   
+
     - name: Use Node.js ${{ matrix.node-version }}
-    needs: build
+      uses: actions/setup-node@v1
     - with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
