@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
          build
-          name: webpack artifacts
+          
           path: public
     - name: Use Node.js ${{ matrix.node-version }}
     needs: build
